@@ -1,0 +1,98 @@
+{
+  "project_id": "168f4dce",
+  "title": "The Journey of The Future Of Quantum Computing And Ai",
+  "total_chapters": 10,
+  "total_word_count": 2390,
+  "total_character_count": 16328,
+  "estimated_reading_time": {
+    "minutes": 11.9,
+    "hours": 0.2,
+    "formatted": "11 mins"
+  },
+  "readability": {
+    "flesch_reading_ease": 38.03,
+    "level": "Academic / Highly Complex"
+  },
+  "chapters": [
+    {
+      "chapter_number": 1,
+      "title": "Chapter 1: The Awakening Call",
+      "word_count": 238,
+      "character_count": 1626,
+      "estimated_reading_time_minutes": 1.2,
+      "flesch_reading_ease": 37.17
+    },
+    {
+      "chapter_number": 2,
+      "title": "Chapter 2: Foundations of Vision",
+      "word_count": 238,
+      "character_count": 1646,
+      "estimated_reading_time_minutes": 1.2,
+      "flesch_reading_ease": 36.1
+    },
+    {
+      "chapter_number": 3,
+      "title": "Chapter 3: Unseen Crossroad",
+      "word_count": 238,
+      "character_count": 1631,
+      "estimated_reading_time_minutes": 1.2,
+      "flesch_reading_ease": 38.59
+    },
+    {
+      "chapter_number": 4,
+      "title": "Chapter 4: Architects of Purpose",
+      "word_count": 240,
+      "character_count": 1641,
+      "estimated_reading_time_minutes": 1.2,
+      "flesch_reading_ease": 38.31
+    },
+    {
+      "chapter_number": 5,
+      "title": "Chapter 5: Trial by Fire",
+      "word_count": 239,
+      "character_count": 1625,
+      "estimated_reading_time_minutes": 1.2,
+      "flesch_reading_ease": 39.16
+    },
+    {
+      "chapter_number": 6,
+      "title": "Chapter 6: The Art of Craft",
+      "word_count": 242,
+      "character_count": 1632,
+      "estimated_reading_time_minutes": 1.2,
+      "flesch_reading_ease": 39.44
+    },
+    {
+      "chapter_number": 7,
+      "title": "Chapter 7: Illuminated Insights",
+      "word_count": 237,
+      "character_count": 1642,
+      "estimated_reading_time_minutes": 1.2,
+      "flesch_reading_ease": 36.23
+    },
+    {
+      "chapter_number": 8,
+      "title": "Chapter 8: Expanding Horizons",
+      "word_count": 237,
+      "character_count": 1623,
+      "estimated_reading_time_minutes": 1.2,
+      "flesch_reading_ease": 37.3
+    },
+    {
+      "chapter_number": 9,
+      "title": "Chapter 9: The Quiet Triumph",
+      "word_count": 239,
+      "character_count": 1632,
+      "estimated_reading_time_minutes": 1.2,
+      "flesch_reading_ease": 38.81
+    },
+    {
+      "chapter_number": 10,
+      "title": "Chapter 10: The Horizon Ahead",
+      "word_count": 242,
+      "character_count": 1630,
+      "estimated_reading_time_minutes": 1.2,
+      "flesch_reading_ease": 39.09
+    }
+  ]
+}
