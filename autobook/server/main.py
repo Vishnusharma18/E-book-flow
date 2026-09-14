@@ -11,6 +11,7 @@ from autobook.models import BookProject
 from autobook.pipeline.master_pipeline import ContentPipeline
 from autobook.exporter import BundleExporter
 from autobook.analytics import BookAnalyticsEngine
+from autobook.translation import BookTranslationEngine
 
 app = FastAPI(
     title="AutoBook Publisher Platform API",
@@ -32,11 +33,16 @@ PROJECT_ZIP_PATHS: Dict[str, str] = {}
 
 exporter = BundleExporter()
 analytics_engine = BookAnalyticsEngine()
+translation_engine = BookTranslationEngine()
 
 
 class CreateBookRequest(BaseModel):
     topic_or_url: str
     title: Optional[str] = None
+
+
+class TranslateBookRequest(BaseModel):
+    target_language: str
 
 
 def generate_book_task(project_id: str, topic_or_url: str, title: Optional[str]):
@@ -118,6 +124,24 @@ def get_project_analytics(project_id: str):
         raise HTTPException(status_code=404, detail="Project not found")
     project = PROJECTS[project_id]
     return analytics_engine.analyze_project(project)
+
+
+@app.post("/api/projects/{project_id}/translate")
+def translate_project(project_id: str, req: TranslateBookRequest):
+    if project_id not in PROJECTS:
+        raise HTTPException(status_code=404, detail="Project not found")
+    project = PROJECTS[project_id]
+    try:
+        translated_proj = translation_engine.translate_project(project, req.target_language)
+        PROJECTS[translated_proj.id] = translated_proj
+        return {
+            "original_project_id": project_id,
+            "translated_project_id": translated_proj.id,
+            "target_language": req.target_language,
+            "translated_project": translated_proj
+        }
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
 
 
 @app.get("/api/projects/{project_id}/download")
