@@ -11,6 +11,7 @@ from autobook.formatting.pdf_engine import PDFEngine
 from autobook.formatting.epub_engine import EPUBEngine
 from autobook.formatting.cover_engine import CoverEngine
 from autobook.formatting.marketing_engine import MarketingEngine
+from autobook.analytics import BookAnalyticsEngine
 
 
 class BundleExporter:
@@ -23,6 +24,7 @@ class BundleExporter:
         self.epub_engine = EPUBEngine()
         self.cover_engine = CoverEngine()
         self.marketing_engine = MarketingEngine()
+        self.analytics_engine = BookAnalyticsEngine()
 
     def build_bundle(self, project: BookProject) -> str:
         """Generates all deliverables and packages them into a single .zip file."""
@@ -38,6 +40,7 @@ class BundleExporter:
         poster_path = os.path.join(proj_dir, "marketing_poster.png")
         banner_path = os.path.join(proj_dir, "marketing_banner.png")
         metadata_path = os.path.join(proj_dir, "kdp_metadata.json")
+        analytics_path = os.path.join(proj_dir, "analytics_report.json")
 
         # Generate components
         self.pdf_engine.generate_pdf(project, pdf_path)
@@ -51,6 +54,11 @@ class BundleExporter:
         # Write Metadata JSON
         with open(metadata_path, "w") as f:
             json.dump(project.metadata.model_dump(), f, indent=2)
+
+        # Write Analytics Report JSON
+        analytics_data = self.analytics_engine.analyze_project(project)
+        with open(analytics_path, "w") as f:
+            json.dump(analytics_data, f, indent=2)
 
         # Zip creation
         zip_filename = f"{project.id}_publishing_bundle.zip"

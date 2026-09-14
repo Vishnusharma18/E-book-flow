@@ -10,6 +10,7 @@ from pydantic import BaseModel
 from autobook.models import BookProject
 from autobook.pipeline.master_pipeline import ContentPipeline
 from autobook.exporter import BundleExporter
+from autobook.analytics import BookAnalyticsEngine
 
 app = FastAPI(
     title="AutoBook Publisher Platform API",
@@ -30,6 +31,7 @@ PROJECTS: Dict[str, BookProject] = {}
 PROJECT_ZIP_PATHS: Dict[str, str] = {}
 
 exporter = BundleExporter()
+analytics_engine = BookAnalyticsEngine()
 
 
 class CreateBookRequest(BaseModel):
@@ -108,6 +110,14 @@ def get_project(project_id: str):
     if project_id not in PROJECTS:
         raise HTTPException(status_code=404, detail="Project not found")
     return PROJECTS[project_id]
+
+
+@app.get("/api/projects/{project_id}/analytics")
+def get_project_analytics(project_id: str):
+    if project_id not in PROJECTS:
+        raise HTTPException(status_code=404, detail="Project not found")
+    project = PROJECTS[project_id]
+    return analytics_engine.analyze_project(project)
 
 
 @app.get("/api/projects/{project_id}/download")
