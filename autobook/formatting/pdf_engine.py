@@ -1,7 +1,6 @@
-"""Task 3.1: HTML/CSS to WeasyPrint PDF Layout Template Engine."""
+"""Task 3.1: Enhanced HTML/CSS to WeasyPrint PDF Layout Template Engine."""
 
 import os
-from typing import Optional
 import weasyprint
 from autobook.models import BookProject
 
@@ -13,13 +12,11 @@ class PDFEngine:
         pass
 
     def build_html_content(self, project: BookProject) -> str:
-        """Constructs HTML string styled with Plough-inspired typography for print."""
+        """Constructs HTML string styled with high-aesthetic typography for print."""
         chapters_html = ""
         for ch in project.chapters:
-            # Clean markdown headings or paragraph markers for HTML rendering
-            text_content = ch.proofread_text or ch.raw_text
+            text_content = ch.proofread_text or ch.raw_text or ""
 
-            # Simple markdown to HTML transformations for chapter body
             html_body = []
             for block in text_content.split("\n\n"):
                 block = block.strip()
@@ -48,54 +45,87 @@ class PDFEngine:
     <meta charset="UTF-8">
     <title>{project.title}</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap');
+
         @page {{
             size: 6in 9in; /* Standard Paperback Trim */
-            margin-top: 20mm;
-            margin-bottom: 20mm;
-            margin-inside: 22mm; /* Gutter margin */
-            margin-outside: 18mm;
+            margin-top: 22mm;
+            margin-bottom: 22mm;
+            margin-inside: 24mm; /* Gutter margin */
+            margin-outside: 20mm;
+            @top-center {{
+                content: "{project.title}";
+                font-family: 'Cinzel', 'Georgia', serif;
+                font-size: 7.5pt;
+                letter-spacing: 1.5px;
+                color: #777777;
+                text-transform: uppercase;
+            }}
             @bottom-center {{
                 content: counter(page);
-                font-family: 'Garamond', 'Georgia', serif;
-                font-size: 9pt;
-                color: #555555;
+                font-family: 'EB Garamond', 'Georgia', serif;
+                font-size: 10pt;
+                color: #444444;
             }}
         }}
 
+        @page :first {{
+            @top-center {{ content: none; }}
+            @bottom-center {{ content: none; }}
+        }}
+
         body {{
-            font-family: 'Garamond', 'Georgia', 'Times New Roman', serif;
-            font-size: 11pt;
-            line-height: 1.6;
-            color: #222222;
+            font-family: 'EB Garamond', 'Garamond', 'Georgia', serif;
+            font-size: 11.5pt;
+            line-height: 1.65;
+            color: #1a1a1a;
             text-align: justify;
         }}
 
         .title-page {{
             page-break-after: always;
             text-align: center;
-            padding-top: 3in;
+            padding-top: 2.5in;
         }}
 
         .book-title {{
-            font-size: 26pt;
-            font-weight: normal;
-            letter-spacing: 1px;
-            margin-bottom: 10px;
+            font-family: 'Cinzel', serif;
+            font-size: 28pt;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #111827;
+            margin-bottom: 15px;
             text-transform: uppercase;
         }}
 
         .book-subtitle {{
-            font-size: 13pt;
+            font-family: 'EB Garamond', serif;
+            font-size: 14pt;
             font-style: italic;
-            color: #444;
-            margin-bottom: 40px;
+            color: #4b5563;
+            margin-bottom: 50px;
+        }}
+
+        .ornament-divider {{
+            font-size: 16pt;
+            color: #d4af37;
+            margin: 40px 0;
         }}
 
         .book-author {{
+            font-family: 'Cinzel', serif;
             font-size: 11pt;
             text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #374151;
+        }}
+
+        .publisher-brand {{
+            margin-top: 80px;
+            font-family: 'Cinzel', serif;
+            font-size: 9pt;
             letter-spacing: 2px;
-            color: #666;
+            color: #9ca3af;
         }}
 
         .chapter-page {{
@@ -103,26 +133,31 @@ class PDFEngine:
         }}
 
         .chapter-title {{
+            font-family: 'Cinzel', serif;
             font-size: 20pt;
-            font-weight: normal;
+            font-weight: 500;
             text-align: center;
-            margin-top: 1in;
-            margin-bottom: 0.5in;
-            letter-spacing: 0.5px;
+            margin-top: 1.2in;
+            margin-bottom: 0.6in;
+            letter-spacing: 1px;
+            color: #1f2937;
         }}
 
         .section-title {{
-            font-size: 13pt;
-            font-weight: bold;
-            margin-top: 20px;
-            margin-bottom: 10px;
+            font-family: 'Cinzel', serif;
+            font-size: 12pt;
+            font-weight: 700;
+            margin-top: 24px;
+            margin-bottom: 12px;
             text-align: left;
+            letter-spacing: 0.5px;
+            color: #374151;
         }}
 
         p {{
             margin-top: 0;
             margin-bottom: 0;
-            text-indent: 1.5em;
+            text-indent: 1.6em;
         }}
 
         p.first-paragraph {{
@@ -131,19 +166,19 @@ class PDFEngine:
 
         .dropcap {{
             float: left;
-            font-size: 3.2em;
+            font-size: 3.5em;
             line-height: 0.8;
-            margin-right: 6px;
-            margin-bottom: -2px;
-            font-family: 'Georgia', serif;
-            color: #111;
+            margin-right: 8px;
+            margin-bottom: -4px;
+            font-family: 'Cinzel', 'Georgia', serif;
+            color: #d4af37;
         }}
 
         .section-break {{
             text-align: center;
-            margin: 20px 0;
-            font-size: 12pt;
-            color: #777;
+            margin: 24px 0;
+            font-size: 14pt;
+            color: #d4af37;
         }}
     </style>
 </head>
@@ -151,7 +186,9 @@ class PDFEngine:
     <div class="title-page">
         <h1 class="book-title">{project.title}</h1>
         <div class="book-subtitle">{project.metadata.subtitle}</div>
+        <div class="ornament-divider">❖  ◆  ❖</div>
         <div class="book-author">{project.metadata.author}</div>
+        <div class="publisher-brand">PLOUGH LITERARY PRESS</div>
     </div>
     {chapters_html}
 </body>
@@ -160,7 +197,7 @@ class PDFEngine:
         return full_html
 
     def generate_pdf(self, project: BookProject, output_path: str) -> str:
-        """Generates PDF file using WeasyPrint."""
+        """Generates print-ready PDF file using WeasyPrint."""
         html_str = self.build_html_content(project)
         os.makedirs(os.path.dirname(os.path.abspath(output_path)), exist_ok=True)
         weasyprint.HTML(string=html_str).write_pdf(output_path)

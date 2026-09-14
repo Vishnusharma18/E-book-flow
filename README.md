@@ -63,15 +63,15 @@ Interactive API documentation will be available at `http://localhost:8000/docs`.
 ```
 autobook-publisher-agent/
 ├── README.md
-├── results/                  # Generated Demo Outputs & Artifacts
-│   ├── 168f4dce/             # Extracted deliverables (PDF, EPUB, Covers, Mockup, Analytics)
-│   └── 168f4dce_publishing_bundle.zip
+├── results/                  # Generated High-Aesthetic Demo Outputs & Artifacts
+│   ├── e60ce7ed/             # Extracted deliverables (PDF, EPUB, Covers, 3D Mockup, Banners)
+│   └── e60ce7ed_publishing_bundle.zip
 ├── autobook/
 │   ├── analytics.py          # Analytics & Reading Time Analysis Engine
 │   ├── translation.py        # Multi-Language Translation Engine
 │   ├── exporter.py           # One-Click .zip Publishing Bundle Exporter
 │   ├── models.py             # Core Data Models
-│   ├── formatting/           # PDF (WeasyPrint), EPUB, Cover & Marketing Canvas Engines
+│   ├── formatting/           # Enhanced PDF (WeasyPrint), EPUB, Cover & Marketing Canvas Engines
 │   ├── pipeline/             # Research, Writer, Proofreader & Master Pipeline Agents
 │   └── server/               # FastAPI Server & REST Endpoints
 ├── frontend/                 # Next.js 14 Dashboard & Landing Pages
@@ -80,34 +80,34 @@ autobook-publisher-agent/
 
 ---
 
-## 📊 Results & Demo Output Example
+## 📊 Results & High-Aesthetic Demo Output Example
 
-A sample run on the topic *"The Future of Quantum Computing and AI"* has been generated and saved in the `results/` folder.
+A sample run on the topic *"The Future of Quantum Computing and AI"* has been generated with enhanced typography, double gold-foil borders, and 3D mockups saved in `results/`.
 
 ### Demo Run Summary:
 - **Topic**: *"The Future of Quantum Computing and AI"*
 - **Generated Title**: *"The Journey of The Future Of Quantum Computing And Ai"*
-- **Project ID**: `168f4dce`
+- **Project ID**: `e60ce7ed`
 - **Total Chapters**: 10 Chapters
 - **Total Word Count**: 2,390 Words
 - **Estimated Reading Time**: 11 Minutes
 - **Readability Score**: 38.03 (*Academic / Highly Complex*)
 
 ### Generated Deliverables Saved in `results/`:
-All output files are available in `results/168f4dce/` and packaged inside `results/168f4dce_publishing_bundle.zip`:
+All output files are available in `results/e60ce7ed/` and packaged inside `results/e60ce7ed_publishing_bundle.zip`:
 
 | Deliverable | File Path | Description |
 | :--- | :--- | :--- |
-| **Print PDF** | `results/168f4dce/168f4dce_print.pdf` | Print-ready PDF with dropcaps, headers & page numbers |
-| **EPUB E-Book** | `results/168f4dce/168f4dce_ebook.epub` | Validated EPUB 3.0 file for e-readers |
-| **Front Cover** | `results/168f4dce/cover_front.png` | High-resolution front cover graphic |
-| **Wraparound Cover** | `results/168f4dce/cover_wraparound.png` | Complete KDP paperback cover (Back + Spine + Front) |
-| **3D Book Mockup** | `results/168f4dce/mockup_3d.png` | 3D Hardcover perspective mockup |
-| **Marketing Poster** | `results/168f4dce/marketing_poster.png` | Social media quote poster |
-| **Marketing Banner** | `results/168f4dce/marketing_banner.png` | Launch promotional banner |
-| **Analytics Report** | `results/168f4dce/analytics_report.json` | JSON word count, reading time & readability report |
-| **KDP Metadata** | `results/168f4dce/kdp_metadata.json` | Publishing metadata JSON |
-| **Full Bundle ZIP** | `results/168f4dce_publishing_bundle.zip` | 1-Click ZIP bundle containing all deliverables |
+| **Print PDF** | `results/e60ce7ed/e60ce7ed_print.pdf` | Print-ready PDF with Garamond & Cinzel typography, dropcaps & headers |
+| **EPUB E-Book** | `results/e60ce7ed/e60ce7ed_ebook.epub` | Validated EPUB 3.0 file for e-readers |
+| **Front Cover** | `results/e60ce7ed/cover_front.png` | Gradient midnight-blue cover with gold foil accent borders |
+| **Wraparound Cover** | `results/e60ce7ed/cover_wraparound.png` | Complete KDP paperback cover spread (Back + Spine + Front) |
+| **3D Book Mockup** | `results/e60ce7ed/mockup_3d.png` | Realistic 3D Hardcover perspective mockup with page edges and drop shadow |
+| **Marketing Poster** | `results/e60ce7ed/marketing_poster.png` | High-aesthetic social media quote poster |
+| **Marketing Banner** | `results/e60ce7ed/marketing_banner.png` | Promotional web launch banner |
+| **Analytics Report** | `results/e60ce7ed/analytics_report.json` | JSON word count, reading time & readability report |
+| **KDP Metadata** | `results/e60ce7ed/kdp_metadata.json` | Publishing metadata JSON |
+| **Full Bundle ZIP** | `results/e60ce7ed_publishing_bundle.zip` | 1-Click ZIP bundle containing all deliverables |
 
 ---
 
